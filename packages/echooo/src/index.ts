@@ -14,17 +14,17 @@ function echooo(): WalletInit {
 
         let provider: EIP1193Provider
 
-        // check if echooo is injected into window.ethereum
+        // check if echooo wallet is injected into window.ethereum
         if (ethereumInjectionExists && window['ethereum'].isEchooo) {
           provider = window['ethereum']
         } else if (window['echoooEth']) {
-          // directly use the window.echooo injection
+          // directly use the window.echoooEth injection
           provider = window['echoooEth']
         } else {
-          // echooo extension is not installed
+          // Echooo Wallet extension is not installed
           // send user to install page
           window.open('https://www.echooo.xyz', '_blank')
-          throw new Error('Please Install Echooo to use this wallet')
+          throw new Error('Please Install Echooo Wallet to use this wallet')
         }
 
         return {
