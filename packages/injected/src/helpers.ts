@@ -29,20 +29,26 @@ export const isWalletAvailable = (
 ): boolean => {
   // No injected providers exist.
   if (!provider) {
+    console.log("#0 false")
     return false
   }
 
   // Many injected providers add their own object into window.
   if (checkProviderIdentity({ provider, device })) {
+    console.log("#1 true")
     return true
   }
 
   // For multiple injected providers, check providers array
   // example coinbase inj wallet pushes over-ridden wallets
   // into a providers array at window.ethereum
-  return !!provider.providers?.some(provider =>
+  const x = !!provider.providers?.some(provider =>
     checkProviderIdentity({ provider, device })
   )
+
+  console.log("#2", x)
+
+  return x
 }
 
 export 

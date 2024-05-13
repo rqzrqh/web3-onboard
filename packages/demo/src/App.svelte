@@ -80,50 +80,19 @@
   let signMsg = 'Any string message'
 
   const injected = injectedModule({
+
     custom: [
-      // include custom (not natively supported) injected wallet modules here
+      //injectedModule.wallets.echooo
     ],
-    // display all unavailable injected wallets
-    // displayUnavailable: true,
-    // ||
-    // display specific unavailable wallets
+    /*
     displayUnavailable: [
       ProviderLabel.MetaMask,
       ProviderLabel.Trust,
-      ProviderLabel.Phantom
+      ProviderLabel.Phantom,
+      ProviderLabel.Zerion,
+      ProviderLabel.Echooo
     ]
-    // but only show Binance and Bitski wallet if they are available
-    // filter: {
-    //   [ProviderLabel.Binance]: 'unavailable',
-    //   [ProviderLabel.Bitski]: 'unavailable'
-    // }
-    // do a manual sort of injected wallets so that MetaMask and Coinbase are ordered first
-    // sort: wallets => {
-    //   const metaMask = wallets.find(
-    //     ({ label }) => label === ProviderLabel.MetaMask
-    //   )
-    //   const coinbase = wallets.find(
-    //     ({ label }) => label === ProviderLabel.Coinbase
-    //   )
-
-    //   return (
-    //     [
-    //       metaMask,
-    //       coinbase,
-    //       ...wallets.filter(
-    //         ({ label }) =>
-    //           label !== ProviderLabel.MetaMask &&
-    //           label !== ProviderLabel.Coinbase
-    //       )
-    //     ]
-    //       // remove undefined values
-    //       .filter(wallet => wallet)
-    //   )
-    // }
-    // walletUnavailableMessage: wallet =>
-    //   wallet.externalUrl
-    //     ? `Oops ${wallet.label} is unavailable! Please <a href="${wallet.externalUrl}" target="_blank">install</a>`
-    //     : `Oops ${wallet.label} is unavailable!`
+    */
   })
 
   const coinbaseWallet = coinbaseModule()
@@ -233,45 +202,11 @@
       portalTextColor: '#ffffff'
     }
   })
-  const echooo = echoooModule()
+  //const echooo = echoooModule()
 
   const onboard = Onboard({
     wallets: [
-      metamaskSDKWallet,
-      coinbaseWallet,
       injected,
-      ledger,
-      trezor,
-      walletConnect,
-      phantom,
-      safe,
-      trust,
-      tallyho,
-      bitget,
-      enkrypt,
-      infinityWallet,
-      mewWallet,
-      keepkey,
-      keystone,
-      magic,
-      fortmatic,
-      portis,
-      torus,
-      dcent,
-      sequence,
-      uauth,
-      web3auth,
-      capsule,
-      zeal,
-      frontier,
-      xdefi,
-      frameWallet,
-      cedeStore,
-      arcanaAuth,
-      blocto,
-      venly,
-      particle,
-      echooo
     ],
     // transactionPreview,
     gas,

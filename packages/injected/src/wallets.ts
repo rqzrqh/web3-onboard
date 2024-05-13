@@ -916,11 +916,11 @@ const echooo: InjectedWalletModule = {
     !!provider && !!provider[ProviderIdentityFlag.Echooo],
   getIcon: async () => (await import('./icons/echooo.js')).default,
   getInterface: getInjectedInterface(ProviderIdentityFlag.Echooo),
-  platforms: ['all'],
-  externalUrl: ProviderExternalUrl.Echooo
+  platforms: ['all']
 }
 
 const wallets = [
+/*
   zeal,
   exodus,
   frontier,
@@ -954,17 +954,23 @@ const wallets = [
   tokenary,
   tally,
   rabby,
+  */
   mathwallet,
+  /*
   sequence,
   core,
   bitski,
   enkrypt,
   phantom,
   okxwallet,
+  */
   zerion,
+  /*
   rainbow,
   safepal,
   defiwallet,
+  */
+  /*
   infinitywallet,
   safeheron,
   talisman,
@@ -978,6 +984,7 @@ const wallets = [
   Lif3Wallet,
   zodiacPilot,
   stablewallet,
+  */
   echooo
 ]
 

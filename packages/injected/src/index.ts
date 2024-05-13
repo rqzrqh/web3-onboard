@@ -93,6 +93,9 @@ function injected(options?: InjectedWalletOptions): WalletInit {
       ({ label }) => label
     )
 
+    console.log("##haha0")
+    console.log(allWallets)
+
     const wallets = allWallets.reduce(
       (acc: InjectedWalletModule[], wallet: InjectedWalletModule) => {
         const {
@@ -105,9 +108,36 @@ function injected(options?: InjectedWalletOptions): WalletInit {
 
         const walletFilters = filter[label]
         const filteredWallet = walletFilters === false
+
+        
         const provider =
           eip6963Provider ||
           (window[injectedNamespace!] as CustomWindow['ethereum'])
+
+
+        console.log("##", wallet.label)
+
+        console.log("#namespace", injectedNamespace)
+
+        const x = (window[injectedNamespace!] as CustomWindow['ethereum'])
+
+        console.log("##eip6963", eip6963Provider)
+        console.log("#x", x)
+        console.log("#provider ", provider)
+
+        //const func = !!provider && !!provider[ProviderIdentityFlag.Echooo],
+
+        if (wallet.label === ProviderLabel.Zerion) {
+          console.log(!!provider)
+          console.log(!!provider['isZerion'])
+          console.log(provider.isZerion, typeof provider.isZerion)
+        }
+
+        if (wallet.label === ProviderLabel.Echooo) {
+          console.log(!!provider)
+          console.log(!!provider['isEchooo'])
+          console.log(provider.isEchooo)
+        }
 
         const walletAvailable = isWalletAvailable(
           provider,
@@ -147,6 +177,8 @@ function injected(options?: InjectedWalletOptions): WalletInit {
               displayUnavailable.length &&
               displayUnavailable.includes(wallet.label)))
 
+        console.log(wallet.label, supportedWallet, filteredWallet, excludedDevice, invalidPlatform, walletAvailable, displayUnavailable)
+
         if (supportedWallet) {
           acc.push(
             // modify wallet to display error if unavailable but displayUnavailable is set
@@ -174,6 +206,9 @@ function injected(options?: InjectedWalletOptions): WalletInit {
       },
       [] as InjectedWalletModule[]
     )
+
+    console.log("##haha1")
+    console.log(wallets)
 
     if (wallets.length) {
       const moreThanOneWallet = wallets.length > 1

@@ -35,5 +35,5 @@ export const WALLET_NAMES: { [key: string]: string } = {
   kayros: 'Kayros',
   foxwallet: "FoxWallet",
   Lif3Wallet: 'Lif3 Wallet',
-  Echooo:'Echooo Wallet'
+  echooo:'Echooo Wallet'
 }
