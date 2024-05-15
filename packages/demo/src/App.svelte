@@ -35,7 +35,6 @@
   import venlyModule from '@web3-onboard/venly'
   import bitgetModule from '@web3-onboard/bitget'
   import particleAuthModule from '@web3-onboard/particle-network'
-  import echoooModule from '@web3-onboard/echooo'
   import capsuleModule, {
     Environment,
     OAuthMethod,
@@ -233,7 +232,6 @@
       portalTextColor: '#ffffff'
     }
   })
-  const echooo = echoooModule()
 
   const onboard = Onboard({
     wallets: [
@@ -271,7 +269,6 @@
       blocto,
       venly,
       particle,
-      echooo
     ],
     // transactionPreview,
     gas,
@@ -441,6 +438,7 @@
   // Subscribe to wallet updates
   const wallets$ = onboard.state.select('wallets').pipe(share())
   wallets$.subscribe(wallet => {
+    console.log("12431223123", wallet);
     console.log(wallet)
     const unstoppableUser = wallet.find(
       provider => provider.label === 'Unstoppable'
@@ -628,6 +626,11 @@
   function isSVG(str) {
     return str.includes('<svg')
   }
+
+  function showWallets() {
+    console.log("onboard message", onboard);
+    onboard.connectWallet()
+  }
 </script>
 
 <style>
@@ -686,9 +689,10 @@
   }
 </style>
 
+
 <main>
   <div class="cta">
-    <button on:click={() => onboard.connectWallet()} id="connectBtn"
+    <button on:click={() => showWallets()} id="connectBtn"
       >Connect Wallet</button
     >
     <select bind:value={selectedTheme} on:change={() => updateTheme()}>
